@@ -45,12 +45,13 @@ The three chapters from *Alice’s Adventures in Wonderland* were cleaned and pr
 
 ## 3. Methodology
 
-### 3.1 VADER on Alice (chapter-level)
+### **3.1 VADER on Alice (chapter-level)**
 
 Each chapter is read as a full document and passed to VADER:
 
 ```python
 scores = sia.polarity_scores(text)
+```
 
 This produces one sentiment profile per chapter:
 
@@ -61,23 +62,25 @@ This produces one sentiment profile per chapter:
 
 ---
 
-### 3.2 VADER on Reddit (comment-level)
+### **3.2 VADER on Reddit (comment-level)**
+
 Reddit comments are processed line by line:
 
+```python
 scores = sia.polarity_scores(comment)
+```
 
 Each comment is classified as:
 
-- positive (compound > 0.05)
-
-- negative (compound < -0.05)
-
-- neutral (otherwise)
+- **positive** (`compound > 0.05`)
+- **negative** (`compound < -0.05`)
+- **neutral** (otherwise)
 
 ---
 
-## 4. Results
-### 4.1 VADER on Alice
+## **4. Results**
+
+### **4.1 VADER on Alice**
 
 | Chapter | Positive | Negative | Neutral | Compound | Classification |
 |----------|----------|----------|----------|----------|----------|
@@ -87,66 +90,68 @@ Each comment is classified as:
 
 ---
 
-### 4.2 VADER on Reddit Comments
+### **4.2 VADER on Reddit Comments**
 
 | Sentiment | Count |
-| --- | --- |
+|------------|--------|
 | Positive | 27 |
 | Negative | 9 |
 | Neutral | 3 |
 
 ---
 
-## 5. Interpretation
+## **5. Interpretation**
 
 All three Alice chapters were classified as positive, whereas Reddit comments were distributed across positive, negative, and neutral categories.
 
-### 5.1 Why VADER inflates positivity in literature
+### **5.1 Why VADER Inflates Positivity in Literature**
 
 VADER was designed for modern, informal English. Literary prose contains:
 
 - archaic vocabulary interpreted as positive (e.g., *curious*, *remarkable*, *wonderful*)
 - descriptive narration mistaken for emotional positivity
 - long passages that dilute negative cues
-- dialogue that appears neutral but lexically “positive”
+- dialogue that appears neutral but lexically positive
 
 As a result, VADER assigns unusually high compound scores to classical texts.
 
-### 5.2 Why Reddit comments behave as expected
+### **5.2 Why Reddit Comments Behave as Expected**
 
 Reddit comments:
 
 - are short and opinionated
 - contain explicit sentiment markers
-- use intensifiers, negations, and colloquial tone
-- match VADER’s training domain
+- use intensifiers, negations, and colloquial language
+- match VADER's training domain
 
 Thus, the sentiment distribution is more balanced and intuitive.
 
 ---
 
-## 6. Limitations of VADER
+## **6. Limitations of VADER**
 
-- **Lexicon mismatch** with older or literary English  
-- **Context blindness** (cannot detect irony, narrative distance, or subtle emotion)  
-- **Length effects** (long texts skew toward neutrality or positivity)  
-- **Genre bias** (descriptive prose appears positive)
+- **Lexicon mismatch** with older or literary English
+- **Context blindness** (cannot detect irony, narrative distance, or subtle emotion)
+- **Length effects** (long texts may skew toward neutrality or positivity)
+- **Genre bias** (descriptive prose can appear positive)
 
 ---
 
-## 7. Future Work
+## **7. Future Work**
 
-- Compare VADER with transformer-based sentiment models  
-- Apply sentence-level analysis to *Alice*  
-- Explore sarcasm detection in Reddit comments  
+- Compare VADER with transformer-based sentiment models
+- Apply sentence-level analysis to *Alice's Adventures in Wonderland*
+- Explore sarcasm detection in Reddit comments
 - Build a custom lexicon for literary English
 
 ---
 
-## 8. Summary
+## **8. Summary**
 
-This project shows that VADER is not genre‑agnostic.  
-It performs well on Reddit comments but produces inflated positivity when applied to classical literature.  
-Understanding these limitations is essential when choosing sentiment tools for NLP tasks.
+This project shows that VADER is not genre-agnostic.
+
+It performs well on Reddit comments but produces inflated positivity when applied to classical literature.
+
+Understanding these limitations is essential when choosing sentiment analysis tools for NLP tasks.
 
 
