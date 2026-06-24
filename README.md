@@ -82,7 +82,7 @@ Each comment is classified as:
 
 ### **4.1 VADER on Alice**
 
-| Chapter | Positive | Negative | Neutral | Compound | Classification |
+| Chapter | Positive | Negative | Neutral | Compound | Sentiment |
 |----------|----------|----------|----------|----------|----------|
 | Down the Rabbit Hole | 0.104 | 0.073 | 0.823 | 0.9977 | Positive |
 | A Mad Tea-Party | 0.072 | 0.068 | 0.860 | 0.9562 | Positive |
